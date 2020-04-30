@@ -21,9 +21,7 @@ def mlike(request):
     a.raiting += 1 
     a.save()
     return redirect('http://127.0.0.1:8000/pictures/?page={}'.format(tmp_id))
-   #return render(request, 'home.html/',context={'page_obj':Pic})
-   #return HttpResponseRedirect(reverse('app_first_test:main'))
-   #return render(request, 'home.html/picture/?page=1')
+
 
 def mdislike(request):
     try:
@@ -36,24 +34,4 @@ def mdislike(request):
     a.save()
 
     return redirect('http://127.0.0.1:8000/pictures/?page={}'.format(tmp_id))
-
-def like(request, picture_id):
-    try:
-        a = Picture.objects.get(id = picture_id)
-    except:
-        raise Http404("not found")
-
-    a.raiting += 1 
-    a.save()
-
-    return render(request, 'home.html')
-
-def dislike(request, picture_id):
-    try:
-        a = Picture.objects.get(id = picture_id)
-    except:
-        raise Http404("not found")
-
-    a.raiting -= 1 
-    a.save()
 
